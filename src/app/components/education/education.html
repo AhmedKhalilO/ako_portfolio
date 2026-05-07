@@ -1,0 +1,58 @@
+<section id="education">
+  <div class="container">
+    <h2 class="section-title">Education & <span>Languages</span></h2>
+
+    <div class="edu-layout">
+      <!-- Education -->
+      <div class="edu-cards">
+        <div class="edu-card" *ngFor="let e of education" [style.--e-color]="e.color">
+          <div class="edu-icon" [style.background]="e.color + '15'"
+               [style.color]="e.color">
+            <i [class]="e.icon"></i>
+          </div>
+          <div class="edu-body">
+            <h3>{{ e.degree }}</h3>
+            <p class="edu-field">{{ e.field }}</p>
+            <p class="edu-school">{{ e.school }}</p>
+            <div class="edu-meta">
+              <span><i class="fas fa-calendar"></i> {{ e.period }}</span>
+              <span><i class="fas fa-map-marker-alt"></i> {{ e.location }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Languages -->
+      <div class="lang-panel">
+        <h3 class="panel-title">
+          <i class="fas fa-language"></i> Languages
+        </h3>
+        <div class="lang-list">
+          <div class="lang-item" *ngFor="let l of languages">
+            <div class="lang-header">
+              <span class="lang-name">{{ l.name }}</span>
+              <span class="lang-level" [style.color]="l.color">{{ l.level }}</span>
+            </div>
+            <div class="lang-bar">
+              <div class="lang-fill"
+                   [style.width.%]="l.pct"
+                   [style.background]="l.color">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Location card -->
+        <div class="location-card">
+          <i class="fas fa-map-marker-alt" style="color: var(--accent)"></i>
+          <div>
+            <p style="font-weight:700;font-family:var(--font-display)">Porto, Portugal 🇵🇹</p>
+            <p style="font-size:0.78rem;color:var(--text-muted);font-family:var(--font-mono)">
+              Immediately available · Open to remote
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,56 @@
+<section id="projects">
+  <div class="container">
+    <h2 class="section-title">Key <span>Projects</span></h2>
+
+    <!-- Filters -->
+    <div class="filters">
+      <button *ngFor="let f of filters"
+              [class.active]="filter === f"
+              (click)="filter = f">
+        {{ f }}
+      </button>
+    </div>
+
+    <!-- Projects grid -->
+    <div class="projects-grid">
+      <div class="project-card" *ngFor="let p of filtered"
+           [class.featured]="p.featured"
+           [style.--p-color]="p.color">
+
+        <div class="card-top">
+          <div class="project-icon" [style.background]="p.color + '15'"
+               [style.color]="p.color">
+            <i [class]="p.icon"></i>
+          </div>
+          <div class="project-status" [class]="'status-' + p.status.toLowerCase().replace(' ', '-')">
+            <span class="status-dot"></span>{{ p.status }}
+          </div>
+        </div>
+
+        <h3 class="project-title">{{ p.title }}</h3>
+        <p class="project-subtitle">{{ p.subtitle }}</p>
+        <p class="project-desc">{{ p.description }}</p>
+
+        <div class="project-metrics">
+          <span *ngFor="let m of p.metrics">{{ m }}</span>
+        </div>
+
+        <div class="project-tags">
+          <span *ngFor="let tag of p.tags">{{ tag }}</span>
+        </div>
+
+        <div class="project-links">
+          <a *ngIf="p.github" [href]="p.github" target="_blank" class="link-btn">
+            <i class="fab fa-github"></i> Code
+          </a>
+          <a *ngIf="p.demo" [href]="p.demo" target="_blank" class="link-btn primary">
+            <i class="fas fa-external-link-alt"></i> Live
+          </a>
+          <span *ngIf="!p.github && !p.demo" class="link-btn disabled">
+            <i class="fas fa-lock"></i> Private
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

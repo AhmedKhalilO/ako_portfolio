@@ -1,0 +1,108 @@
+<section id="hero">
+  <!-- Matrix rain background -->
+  <canvas class="matrix-bg" id="matrixCanvas"></canvas>
+
+  <div class="hero-grid container">
+    <!-- Left: Text -->
+    <div class="hero-text">
+      <p class="greeting">
+        <span class="dot"></span> Available for opportunities
+      </p>
+      <h1>
+        Hi, I'm <br>
+        <span class="name-highlight">Ahmed Khalil</span>
+      </h1>
+      <div class="typed-container">
+        <span class="typed">{{ currentTitle }}</span><span class="cursor-blink">|</span>
+      </div>
+      <p class="bio">
+        Full-Stack & Mobile Developer with <strong>6+ years</strong> crafting
+        production-grade applications. Expert in <span class="tag">Spring Boot</span>,
+        <span class="tag">Angular</span>, and <span class="tag">Android (Kotlin/Java)</span>.
+        Based in <span class="tag">Porto 🇵🇹</span>, immediately available.
+      </p>
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-num">6+</span>
+          <span class="stat-label">Years Exp.</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">7+</span>
+          <span class="stat-label">Apps Built</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">95%</span>
+          <span class="stat-label">Test Coverage</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">2k+</span>
+          <span class="stat-label">Downloads</span>
+        </div>
+      </div>
+      <div class="hero-btns">
+        <button class="btn-primary" (click)="scrollToProjects()">
+          View Projects <i class="fas fa-arrow-right"></i>
+        </button>
+        <button class="btn-secondary" (click)="downloadCV()">
+          Download CV <i class="fas fa-download"></i>
+        </button>
+      </div>
+      <div class="social-links">
+        <a href="https://linkedin.com/in/oueslati-ahmed-khalil/" target="_blank" title="LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="https://github.com/AhmedKhalilO" target="_blank" title="GitHub">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="mailto:oueslati.ahmedkhalil@gmail.com" title="Email">
+          <i class="fas fa-envelope"></i>
+        </a>
+        <a href="tel:+351930506667" title="Phone">
+          <i class="fas fa-phone"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- Right: Avatar with orbit -->
+    <div class="hero-visual">
+      <div class="orbit-container">
+        <!-- Central photo -->
+        <div class="avatar-wrapper">
+          <div class="avatar-ring ring1"></div>
+          <div class="avatar-ring ring2"></div>
+          <div class="avatar-photo">
+            <img src="images/Ahmedkhalil.jpg" alt="Ahmed Khalil" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="avatar-placeholder">AKO</div>
+          </div>
+        </div>
+
+        <!-- Orbiting tech icons -->
+        <div class="orbit-track">
+          <div class="orbit-item" *ngFor="let tech of orbitTechs; let i = index"
+               [style.animationDelay]="'-' + (i * (10/orbitTechs.length)) + 's'">
+            <div class="orbit-icon">
+              <i [class]="tech.icon"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Floating badges -->
+        <div class="badge badge-spring">
+          <i class="fas fa-leaf"></i> Spring Boot
+        </div>
+        <div class="badge badge-android">
+          <i class="fab fa-android"></i> Android
+        </div>
+        <div class="badge badge-test">
+          <i class="fas fa-vial"></i> SDET
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="scroll-indicator">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>

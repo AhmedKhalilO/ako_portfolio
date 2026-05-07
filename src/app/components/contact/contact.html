@@ -1,0 +1,43 @@
+<section id="contact">
+  <div class="container">
+    <h2 class="section-title">Get In <span>Touch</span></h2>
+
+    <div class="contact-layout">
+      <!-- Left: CTA -->
+      <div class="contact-cta">
+        <div class="cta-badge">
+          <span class="dot-green"></span> Open to opportunities
+        </div>
+        <h3>Let's build something <span>extraordinary</span> together.</h3>
+        <p>
+          Full-Stack & Mobile Developer based in Porto, Portugal 🇵🇹.
+          6+ years of production experience, immediately available.
+          Whether it's Spring Boot APIs, Android apps, or Angular frontends — I'm ready.
+        </p>
+        <button class="copy-btn" (click)="copyEmail()">
+          <i class="fas" [class.fa-copy]="!copied" [class.fa-check]="copied"></i>
+          {{ copied ? 'Copied!' : 'Copy email address' }}
+        </button>
+      </div>
+
+      <!-- Right: Contact cards -->
+      <div class="contact-cards">
+        <a *ngFor="let c of contacts"
+           [href]="c.href"
+           target="_blank"
+           class="contact-card"
+           [style.--cc]="c.color">
+          <div class="contact-icon" [style.background]="c.color + '15'"
+               [style.color]="c.color">
+            <i [class]="c.icon"></i>
+          </div>
+          <div>
+            <p class="contact-label">{{ c.label }}</p>
+            <p class="contact-val">{{ c.value }}</p>
+          </div>
+          <i class="fas fa-arrow-right arrow"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

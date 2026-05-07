@@ -1,0 +1,17 @@
+<nav [class.scrolled]="scrolled">
+  <div class="nav-logo" (click)="scrollTo('hero')">
+    <span class="bracket">&lt;</span>AKO<span class="bracket">/&gt;</span>
+  </div>
+
+  <div class="nav-links" [class.open]="menuOpen">
+    <a (click)="scrollTo('skills')">Skills</a>
+    <a (click)="scrollTo('experience')">Experience</a>
+    <a (click)="scrollTo('projects')">Projects</a>
+    <a (click)="scrollTo('education')">Education</a>
+    <a (click)="scrollTo('contact')" class="cta">Contact</a>
+  </div>
+
+  <button class="hamburger" (click)="menuOpen = !menuOpen">
+    <span></span><span></span><span></span>
+  </button>
+</nav>

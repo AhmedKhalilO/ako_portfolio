@@ -1,0 +1,50 @@
+<section id="skills">
+  <div class="container">
+    <h2 class="section-title">Tech <span>Stack</span></h2>
+
+    <!-- Scrolling tech logos -->
+    <div class="tech-ticker">
+      <div class="ticker-track">
+        <div class="ticker-item" *ngFor="let t of techStack">
+          <i [class]="t.icon"></i>
+          <span>{{ t.name }}</span>
+        </div>
+        <!-- Duplicate for infinite scroll -->
+        <div class="ticker-item" *ngFor="let t of techStack">
+          <i [class]="t.icon"></i>
+          <span>{{ t.name }}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Skill groups grid -->
+    <div class="skills-grid">
+      <div class="skill-card" *ngFor="let group of skillGroups"
+           [style.--card-color]="group.color">
+        <div class="card-header">
+          <div class="card-icon" [style.background]="group.color + '20'"
+               [style.color]="group.color">
+            <i [class]="group.icon"></i>
+          </div>
+          <h3>{{ group.category }}</h3>
+        </div>
+
+        <div class="skill-list">
+          <div class="skill-item" *ngFor="let skill of group.skills">
+            <div class="skill-info">
+              <div class="skill-name">
+                <i [class]="skill.icon"></i>
+                {{ skill.name }}
+              </div>
+              <span class="skill-pct">{{ skill.level }}%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-fill" [style.width.%]="skill.level"
+                   [style.background]="group.color"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

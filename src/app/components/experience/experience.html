@@ -1,0 +1,58 @@
+<section id="experience">
+  <div class="container">
+    <h2 class="section-title">Work <span>Experience</span></h2>
+
+    <div class="timeline-layout">
+      <!-- Company list (left) -->
+      <div class="company-list">
+        <div class="company-item"
+             *ngFor="let exp of experiences; let i = index"
+             [class.active]="i === active"
+             [style.--c]="exp.color"
+             (click)="active = i">
+          <div class="company-dot" [style.background]="exp.color"></div>
+          <div class="company-info">
+            <span class="company-name">{{ exp.company }}</span>
+            <span class="company-period">{{ exp.period }}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Detail panel (right) -->
+      <div class="exp-detail" *ngIf="experiences[active] as exp">
+        <div class="exp-header">
+          <div class="exp-icon" [style.background]="exp.color + '20'"
+               [style.color]="exp.color" [style.border-color]="exp.color + '40'">
+            <i [class]="exp.icon"></i>
+          </div>
+          <div>
+            <h3 class="exp-role">{{ exp.role }}</h3>
+            <p class="exp-meta">
+              <span [style.color]="exp.color">{{ exp.company }}</span>
+              &nbsp;·&nbsp; {{ exp.location }}
+              &nbsp;·&nbsp; <span class="badge-type">{{ exp.type }}</span>
+            </p>
+            <p class="exp-period">
+              <i class="fas fa-calendar"></i> {{ exp.period }}
+            </p>
+          </div>
+        </div>
+
+        <ul class="exp-bullets">
+          <li *ngFor="let b of exp.bullets">
+            <span class="bullet-dot" [style.background]="exp.color"></span>
+            {{ b }}
+          </li>
+        </ul>
+
+        <div class="exp-tags">
+          <span class="tag" *ngFor="let tag of exp.tags"
+                [style.border-color]="exp.color + '40'"
+                [style.color]="exp.color">
+            {{ tag }}
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
