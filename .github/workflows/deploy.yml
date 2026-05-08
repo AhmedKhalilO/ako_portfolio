@@ -2,8 +2,7 @@
 
 on:
   push:
-    branches:
-      - main
+    branches: [ "main" ]
 
 jobs:
   build-and-deploy:
@@ -11,14 +10,17 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-      - run: npm ci
-      - run: npm run build
-      - uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          folder: dist/ahmed-portfolio/browser
-          branch: gh-pages
-          token: ${{ secrets.GITHUB_TOKEN }}
+    - uses: actions/checkout@v4
+    - uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+    - run: npm ci
+    - run: npm run build
+    - name: Create .nojekyll
+      run: touch dist/ahmed-portfolio/browser/.nojekyll
+    - uses: JamesIves/github-pages-deploy-action@v4
+      with:
+        folder: dist/ahmed-portfolio/browser
+        branch: gh-pages
+        clean: true
+        token: ${{ secrets.GITHUB_TOKEN }}
