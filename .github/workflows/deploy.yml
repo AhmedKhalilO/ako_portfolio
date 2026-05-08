@@ -25,8 +25,14 @@ jobs:
       - name: Build Angular
         run: npm run build
 
-      - name: Add .nojekyll
-        run: touch dist/ahmed-portfolio/browser/.nojekyll
+      - name: Fix baseHref and add 404
+        run: |
+          cd dist/ahmed-portfolio/browser
+          # Modifier base href dans index.html
+          sed -i 's|<base href="/">|<base href="/ako_portfolio/">|' index.html
+          # Créer 404.html pour le routage
+          cp index.html 404.html
+          touch .nojekyll
 
       - name: Deploy to gh-pages
         uses: JamesIves/github-pages-deploy-action@v4
